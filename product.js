@@ -3,7 +3,7 @@ let name = makeName();
 let price = makePrice();
 let space = makePrice();
 let prime = Prime();
- 
+  
 function makeName(){
     for(x=0;x<10;x++){
         let word = "";

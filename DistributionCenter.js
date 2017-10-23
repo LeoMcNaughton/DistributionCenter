@@ -1,10 +1,9 @@
 //require all of the other files, with node.js,  linkedlist.js, and queue.js
 const Node = require('./node.js')
-const Linkedlist = require('./linkedlist.js')
 const Queue = require('./queue.js')
 const Product = require('./product.js')
 function configureWareHouse(numberofitems){
-    let Warehouse = new Queue(); 
+    let Warehouse = new Queue();
     //fill the warehouse with new Products
     for(let x=0;x<numberofitems;x++){
         Warehouse.enqueue(new Product());
