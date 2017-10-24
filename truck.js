@@ -1,10 +1,27 @@
-const truck = functions(){
+const Truck = function(size){
     let type = size;
     let inventory = [];
     let capacity = setCapacity(size);
-    let spaceEfficency = makeSpaceEfficency();
 
-    function setCapacity(size){
-        size = type.toLowercase
+    function setCapacity(){
+        type = type.toLowerCase();
+        if(size = "small"){s
+            return 1000;
+        }
+        else if(size = "medium"){
+            return 2000;
+        }
+        else if(size = "large"){
+            return 5000;
+        }
     }
+
+  function spaceEfficiency(){
+      let sum = 0;
+      let len = inventory.length;
+      for(let x=0; x<len; x++){
+        sum += inventory[x].space;
+      }
+      return sum/capacity;
+  }
 }
