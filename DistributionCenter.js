@@ -23,14 +23,18 @@ function ship(fleet,percent){
     //if the trucks spaceEfficency is greater than or equal to the percent, then remove the truck from the fleet's linked list
 }
 function main(){
-    let flemhouse = configureWareHouse();
-    let flemfleet = configureTruckFleet();
-    flemfleet = distribute(flemhouse,flemfleet);
-    let shipping = ship(flemfleet,0.80);
-    for(let s=0;s<shipping.length;s++){
-        console.log("Truck "+s+" is in route");
-        console.log("-----------------------");
-        while(s.getNext() != null){
+    console.log("Started...\n")
+    let flemfleet = configureTruckFleet(10);
+    let flemfleet = congifureTruckFleet(10);
+
+    let ready = distribute(flemhouse,flemfleet,0.95);
+
+        while(!ready.isEmpty()){
+            console.log("Truck with Products...");
+            console.log("----------------------");
+            let t = ready.dequeue();
+            console.log(t.spaceEfficiency());
+            for(let i=0;i<t.inventory)
             console.log(shipping[s].getValue().spaceEfficiency());
         }
     }
