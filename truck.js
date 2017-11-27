@@ -2,10 +2,10 @@ const Truck = function(size){
     let type = size;
     let inventory = [];
     let capacity = setCapacity(size);
-
+ 
     function setCapacity(){
         type = type.toLowerCase();
-        if(size = "small"){s
+        if(size = "small"){
             return 1000;
         }
         else if(size = "medium"){
@@ -24,4 +24,6 @@ const Truck = function(size){
       }
       return sum/capacity;
   }
+  return {type,inventory,capacity}
 }
+module.exports = Truck;

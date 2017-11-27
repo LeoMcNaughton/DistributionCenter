@@ -1,41 +1,70 @@
+const Product = require('./Product.js');
+const Queue = require('./queue.js');
+const Truck = require('./Truck.js');
 //require all of the other files, with node.js,  linkedlist.js, and queue.js
-const Node = require('./node.js')
-const Queue = require('./queue.js')
-const Product = require('./product.js')
+
 function configureWareHouse(numberofitems){
     let Warehouse = new Queue();
     //fill the warehouse with new Products
     for(let x=0;x<numberofitems;x++){
         Warehouse.enqueue(new Product());
     }
-    return warehouse;
-
+    return Warehouse;
+ 
 }
 function configureTruckFleet(numberoftrucks){
-    let theFleet = new LinkedList();
+    let theFleet = new Queue();
     //fill the fleet with different sized trucks using math.random()
+    for(let x=0;x<numberoftrucks;x++){
+        //decide truck size
+        let randomnumber = Math.random();
+        if(randomnumber <= 0.33){
+            size = "small";
+        }
+        else if(randomnumber > 0.33 && randomnumber < 0.66){
+            size = "medium";
+        }
+        else{
+            size = "large";
+        }
+        theFleet.enqueue(new Truck(size));
+    }
     return theFleet;
+
 }
 function distribute(wh,tf){
     //distribute the products in the warehouse to the truck fleet.
+    let ready = new Queue();
+    while(!wh.isEmpty() && !tf.isEmpty()){
+        let currentTruck = tf.dequeue();
+        while(currentTruck.spaceEfficiency()<1){
+            currentTruck.inventory.push(wh.dequeue());
+        }
+        if(currentTruck.spaceEfficiency()>1){
+            wh.enqueue(currentTruck.inventory.pop());
+        }
+        ready.enqueue(currentTruck);
+    }
+    return ready;
 }
-function ship(fleet,percent){
-    //if the trucks spaceEfficency is greater than or equal to the percent, then remove the truck from the fleet's linked list
-}
+
 function main(){
     console.log("Started...\n")
+    let flemhouse = configureWareHouse(10);
     let flemfleet = configureTruckFleet(10);
-    let flemfleet = congifureTruckFleet(10);
 
-    let ready = distribute(flemhouse,flemfleet,0.95);
+    let ready = distribute(flemhouse,flemfleet);
 
-        while(!ready.isEmpty()){
-            console.log("Truck with Products...");
-            console.log("----------------------");
-            let t = ready.dequeue();
-            console.log(t.spaceEfficiency());
-            for(let i=0;i<t.inventory)
-            console.log(shipping[s].getValue().spaceEfficiency());
+    ready.print();
+    flemhouse.print();
+    flemfleet.print();
+    while(!ready.isEmpty()){
+        console.log("Truck with products...");
+        console.log("----------------------");
+        let t = ready.dequeue();
+        console.log(t.spaceEfficiency());
+        for(let x=0; x<ct.inventory.length; x++){
+            console.log(ct.inventory[x].name);
         }
     }
 }

@@ -1,7 +1,7 @@
 # Distribution Center
 
 A distribution center has to coordinate the efforts between a warehouse and a truck fleet.  The warehouse represents a giant collection of product-objects.  The truck fleet has a potential unlimited number of trucks: with three different sizes.
-
+ 
 There are 4 functions to implement that reply on the inner workings of other modules.  They are...
   -  configureWareHouse()
   -  configureTruckFleet()
